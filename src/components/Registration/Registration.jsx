@@ -35,29 +35,29 @@ const Registration = () => {
                     <h1 className="text-5xl font-bold">Register now!</h1>
 
                 </div>
-                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 p-6">
                     <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Name</span>
+                                <span className="label-text font-extrabold">Name</span>
                             </label>
                             <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Email</span>
+                                <span className="label-text font-extrabold">Email</span>
                             </label>
                             <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Photo</span>
+                                <span className="label-text font-extrabold">Photo</span>
                             </label>
                             <input type="text" name="photo" placeholder="Photo URL..." className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Password</span>
+                                <span className="label-text font-extrabold">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
                         </div>
@@ -65,7 +65,7 @@ const Registration = () => {
                             <button className="btn btn-primary">Register</button>
                         </div>
                     </form>
-                    <p className="text-center">Already Registerd? Please <Link to={"/login"}>
+                    <p className="text-center">Already Have An Account? Please<Link to={"/login"}>
                         <button className="btn btn-link">Login</button>
                     </Link></p>
                 </div>
