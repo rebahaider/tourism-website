@@ -18,8 +18,14 @@ const Navbar = () => {
     const navLinks = <>
         <li><NavLink to={"/"}>Home</NavLink></li>
         <li><NavLink to={"/allTourists"}>All Tourists Spot</NavLink></li>
-        <li><NavLink to={"/addTourists"}>Add Tourists Spot</NavLink></li>
-        <li><NavLink to={"/myList"}>My List</NavLink></li>
+        {   user &&
+            <>
+
+                <li><NavLink to={"/addTourists"}>Add Tourists Spot</NavLink></li>
+                <li><NavLink to={"/myList"}>My List</NavLink></li>
+
+            </>
+        }
         <li><NavLink to={"/login"}>Login</NavLink></li>
         <li><NavLink to={"/register"}>Register</NavLink></li>
     </>
@@ -37,7 +43,7 @@ const Navbar = () => {
                 <a className="btn btn-ghost text-xl">Tourism Website</a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 gap-10">
+                <ul className="menu menu-horizontal px-1 gap-4">
                     {navLinks}
                 </ul>
             </div>
