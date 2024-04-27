@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 
 const Login = () => {
+
+    const { signInUser } = useContext(AuthContext);
+
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
@@ -9,6 +14,14 @@ const Login = () => {
         const password = form.password.value;
         const user = { email, password };
         console.log(user);
+
+        signInUser(email, password)
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
     return (
 
@@ -17,7 +30,7 @@ const Login = () => {
             <div className="hero-content flex-col">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Login now!</h1>
-                   
+
                 </div>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleLogin} className="card-body">
