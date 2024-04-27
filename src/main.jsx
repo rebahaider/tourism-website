@@ -14,6 +14,7 @@ import AllTourists from './components/AllTourists/AllTourists';
 import AddTourists from './components/AddTourists/AddTourists';
 import MyList from './components/MyList/MyList';
 import AuthProviders from './Providers/AuthProviders';
+import PrivateRoutes from './routes/PrivateRoutes';
 
 
 const router = createBrowserRouter([
@@ -35,11 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addTourists",
-        element: <AddTourists></AddTourists>
+        element: <PrivateRoutes><AddTourists></AddTourists></PrivateRoutes>
       },
       {
         path: "/myList",
-        element: <MyList></MyList>
+        element: <PrivateRoutes><MyList></MyList></PrivateRoutes>
       }
     ]
   }
