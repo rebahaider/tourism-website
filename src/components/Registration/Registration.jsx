@@ -1,11 +1,19 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
+
+
 
 
 const Registration = () => {
 
     const { createUser } = useContext(AuthContext);
+    const [registerError, setRegisterError] = useState('');
+    const [registerSuccess, setRegisterSuccess] = useState('');
+
+    const navigate = useNavigate();
+
+
 
 
     const handleRegister = e => {
@@ -18,14 +26,34 @@ const Registration = () => {
         const user = { name, email, photo, password };
         console.log(user);
 
+        if (password.length < 6) {
+            setRegisterError('Password should be at least 6 characters or more');
+            return;
+        }
+        else if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,10}$/.test(password)) {
+            setRegisterError('Your password should be have at least one lower case & one upper case');
+            return;
+        }
+        // else if (!/A-Z/.test(password)) {
+        //     setRegisterError('Your password should be have at least one upper case');
+        //     return;
+        // }
+
+
+        setRegisterError("");
+        setRegisterSuccess("");
+
         // create user in firebase
         createUser(email, password)
             .then(result => {
                 console.log(result.user)
                 form.reset();
+                navigate("/");
+                setRegisterSuccess("User Created Successfully");
             })
             .catch(error => {
                 console.error(error);
+                setRegisterError(error.message);
             })
     }
     return (
@@ -65,9 +93,16 @@ const Registration = () => {
                             <button className="btn btn-primary">Register</button>
                         </div>
                     </form>
-                    <p className="text-center">Already Have An Account? Please<Link to={"/login"}>
-                        <button className="btn btn-link">Login</button>
+                    <p className="text-center font-bold">Already Have An Account? Please<Link to={"/login"}>
+                        <button className="btn btn-link font-bold">Login</button>
                     </Link></p>
+                    {
+                        registerError && <p className="text-red-600 font-bold">{registerError}</p>
+
+                    }
+                    {
+                        registerSuccess && <p>alert({registerSuccess})</p>
+                    }
                 </div>
             </div>
         </div >

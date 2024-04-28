@@ -55,10 +55,7 @@ const Navbar = () => {
                     </>
                         :
                         <a onClick={handleLogOut} className="btn btn-sm hidden">Sign Out</a>
-
-
                 }
-
             </div>
         </div>
     );

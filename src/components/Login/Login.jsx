@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
-
 const Login = () => {
 
     const { signInUser, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
@@ -17,11 +16,12 @@ const Login = () => {
         const user = { email, password };
         console.log(user);
 
+
         signInUser(email, password)
             .then(result => {
                 console.log(result.user);
-                form.reset();
                 navigate("/");
+                form.reset();
             })
             .catch(error => {
                 console.error(error);
@@ -73,14 +73,21 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
+
                         </div>
                     </form>
-                    <p className="text-center">New To This Site? Please <Link to={"/register"}>
-                        <button className="btn btn-link">Register</button>
+                    <p className="text-center font-bold">New To This Site? Please <Link to={"/register"}>
+                        <button className="btn btn-link text-red-600 font-bold">Register</button>
                     </Link></p>
+
+
+                    {/* Log in with Google */}
                     <p className="text-center mb-4">
                         <button onClick={handleSignInWithGoogle} className="btn btn-ghost btn-outline font-extrabold"><FaGoogle></FaGoogle> Log In Using Google Account</button>
                     </p>
+
+
+                    {/* Login with Github */}
                     <p className="text-center">
                         <button onClick={handleSignInWithGithub} className="btn btn-ghost btn-outline font-extrabold"><FaGithub></FaGithub> Log In Using Github Account</button>
                     </p>
