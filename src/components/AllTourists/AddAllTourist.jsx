@@ -1,8 +1,6 @@
-import Navbar from "../Home/Navbar";
 import Swal from 'sweetalert2'
-
-
-const AddTourists = () => {
+import Navbar from '../Home/Navbar';
+const addAllTourist = () => {
 
     const handleAddTouristSpot = event => {
         event.preventDefault();
@@ -10,38 +8,34 @@ const AddTourists = () => {
 
         const photo = form.photo.value;
         const spotName = form.spotName.value;
-        const countryName = form.countryName.value;
-        const location = form.location.value;
-        const shortDescription = form.shortDescription.value;
         const averageCost = form.averageCost.value;
-        const seasonality = form.seasonality.value;
-        const travelTime = form.travelTime.value;
         const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
-        const email = form.email.value;
-        const userName = form.userName.value;
+        const travelTime = form.travelTime.value;
+        const seasonality = form.seasonality.value;
 
-        const newSpot = { photo, spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorsPerYear, email, userName }
 
-        console.log(newSpot);
+        const newTourist = { photo, spotName, averageCost, totalVisitorsPerYear, travelTime, seasonality }
+
+        console.log(newTourist);
 
         // send data to the server
-        fetch('http://localhost:5000/addTourists', {
+        fetch('http://localhost:5000/allTourists', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newSpot)
+            body: JSON.stringify(newTourist)
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if(data.insertedId){
+                if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
                         text: 'User Added Successfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
-                      })
+                    })
                 }
             })
     }
@@ -64,46 +58,11 @@ const AddTourists = () => {
                         <input type="text" name="spotName" placeholder="Tourist Spot Name" className="input input-bordered input-primary w-1/2" />
                     </label>
                 </div>
-                {/* Country Name */}
-                <div>
-                    <h1 className="text-xl font-bold mb-2">Country Name</h1>
-                    <label>
-                        <input type="text" name="countryName" placeholder="Country Name" className="input input-bordered input-primary w-1/2" />
-                    </label>
-                </div>
-                {/* Location field */}
-                <div>
-                    <h1 className="text-xl font-bold mb-2">Location</h1>
-                    <label>
-                        <input type="text" name="location" placeholder="Location" className="input input-bordered input-primary w-1/2" />
-                    </label>
-                </div>
-                {/* Short Description */}
-                <div>
-                    <h1 className="text-xl font-bold mb-2">Short Description</h1>
-                    <label>
-                        <input type="text" name="shortDescription" placeholder="Short Description" className="input input-bordered input-primary w-1/2" />
-                    </label>
-                </div>
                 {/* Average Cost */}
                 <div>
                     <h1 className="text-xl font-bold mb-2">Average Cost</h1>
                     <label>
                         <input type="text" name="averageCost" placeholder="Average Cost" className="input input-bordered input-primary w-1/2" />
-                    </label>
-                </div>
-                {/* Seasonality */}
-                <div>
-                    <h1 className="text-xl font-bold mb-2">Seasonality</h1>
-                    <label>
-                        <input type="text" name="seasonality" placeholder="Seasonality" className="input input-bordered input-primary w-1/2" />
-                    </label>
-                </div>
-                {/* Travel Time */}
-                <div>
-                    <h1 className="text-xl font-bold mb-2">Travel Time</h1>
-                    <label>
-                        <input type="text" name="travelTime" placeholder="Travel Time" className="input input-bordered input-primary w-1/2" />
                     </label>
                 </div>
                 {/* Total Visitors Per Year */}
@@ -113,20 +72,21 @@ const AddTourists = () => {
                         <input type="text" name="totalVisitorsPerYear" placeholder="Total Visitors Per Year" className="input input-bordered input-primary w-1/2" />
                     </label>
                 </div>
-                {/* User Email */}
+                {/* Travel Time */}
                 <div>
-                    <h1 className="text-xl font-bold mb-2">User Email</h1>
+                    <h1 className="text-xl font-bold mb-2">Travel Time</h1>
                     <label>
-                        <input type="email" name="email" placeholder="User Email" className="input input-bordered input-primary w-1/2" />
+                        <input type="text" name="travelTime" placeholder="Travel Time" className="input input-bordered input-primary w-1/2" />
                     </label>
                 </div>
-                {/* User Name */}
+                {/* Seasonality */}
                 <div>
-                    <h1 className="text-xl font-bold mb-2">User Name</h1>
+                    <h1 className="text-xl font-bold mb-2">Seasonality</h1>
                     <label>
-                        <input type="text" name="userName" placeholder="User Name" className="input input-bordered input-primary w-1/2" />
+                        <input type="text" name="seasonality" placeholder="Seasonality" className="input input-bordered input-primary w-1/2" />
                     </label>
                 </div>
+
                 {/* ADD button */}
                 <div>
                     <label>
@@ -135,8 +95,7 @@ const AddTourists = () => {
                 </div>
             </form>
         </div>
-
     );
 };
 
-export default AddTourists;
+export default addAllTourist;
