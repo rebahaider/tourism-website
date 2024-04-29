@@ -4,6 +4,7 @@ import Banar from "./Banar";
 import Footer from "../../footer/Footer";
 import { Outlet } from "react-router-dom";
 
+
 const Home = () => {
 
 

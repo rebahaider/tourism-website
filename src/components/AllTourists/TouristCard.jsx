@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 
 
 const TouristCard = ({ spot }) => {
 
-    const { photo, spotName, averageCost, totalVisitorsPerYear, travelTime, seasonality } = spot;
+    const {_id, photo, spotName, averageCost, totalVisitorsPerYear, travelTime, seasonality } = spot;
     return (
         <div className="card lg:card-side bg-base-100 shadow-xl">
             <figure><img className="w-[350px] h-[300px] rounded-2xl p-6" src={photo} alt="Album" /></figure>
@@ -13,7 +14,9 @@ const TouristCard = ({ spot }) => {
                 <p>Travel Time: {travelTime}</p>
                 <p>Seasonality: {seasonality}</p>
                 <div className="card-actions">
-                    <button className="btn btn-primary text-white font-extrabold">VIEW DETAILS</button>
+                    <Link to={`/viewDetailsPage/${_id}`}>
+                        <button className="btn btn-primary text-white font-extrabold">VIEW DETAILS</button>
+                    </Link>
                 </div>
             </div>
         </div>
