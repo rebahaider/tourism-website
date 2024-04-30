@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/allTourists",
         element: <AllTourists></AllTourists>,
-        loader: () => fetch('http://localhost:5000/addTourists')
+        loader: () => fetch('https://assignment-10-server-side-khaki.vercel.app/addTourists')
       },
 
     ],
@@ -49,17 +49,17 @@ const router = createBrowserRouter([
   {
     path: "/myList",
     element: <PrivateRoutes><MyList></MyList></PrivateRoutes>,
-    loader: () => fetch('http://localhost:5000/addTourists')
+    loader: () => fetch('https://assignment-10-server-side-khaki.vercel.app/addTourists')
   },
   {
     path: "/viewDetailsPage/:id",
     element: <PrivateRoutes><ViewDetailsPage></ViewDetailsPage></PrivateRoutes>,
-    loader: ({params}) => fetch(`http://localhost:5000/addTourists/${params.id}`)
+    loader: ({params}) => fetch(`https://assignment-10-server-side-khaki.vercel.app/addTourists/${params.id}`)
   },
   {
     path: "/updateSpot/:id",
     element: <UpdateSpot></UpdateSpot>,
-    loader: ({params}) => fetch(`http://localhost:5000/addTourists/${params.id}`)
+    loader: ({params}) => fetch(`https://assignment-10-server-side-khaki.vercel.app/addTourists/${params.id}`)
   }
 
 

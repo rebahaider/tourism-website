@@ -26,7 +26,7 @@ const UpdateSpot = () => {
         console.log(updatedSpot);
 
         // send data to the server
-        fetch(`http://localhost:5000/addTourists/${_id}`, {
+        fetch(`https://assignment-10-server-side-khaki.vercel.app/addTourists/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

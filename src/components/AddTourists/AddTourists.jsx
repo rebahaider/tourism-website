@@ -25,7 +25,7 @@ const AddTourists = () => {
         console.log(newSpot);
 
         // send data to the server
-        fetch('http://localhost:5000/addTourists', {
+        fetch('https://assignment-10-server-side-khaki.vercel.app/addTourists', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -24,7 +24,7 @@ const MyListCard = ({ spot, spots, setSpots }) => {
 
 
 
-                fetch(`http://localhost:5000/addTourists/${_id}`, {
+                fetch(`https://assignment-10-server-side-khaki.vercel.app/addTourists/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
